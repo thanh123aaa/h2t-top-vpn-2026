@@ -1,7 +1,7 @@
 # BÀI TEST THIẾT KẾ UI/UX & FRONTEND DEVELOPMENT
 ## Dự án: Top VPN Services 2026
 
-* **Ứng viên:** Nguyễn Thanh  
+* **Ứng viên:** Phạm Ngọc Thành  
 * **Đơn vị tuyển dụng:** Công ty TNHH Truyền thông và Quảng cáo H2T  
 * **Vị trí ứng tuyển:** Thực tập sinh Fullstack  
 
