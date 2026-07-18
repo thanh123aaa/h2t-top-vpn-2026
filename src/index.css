@@ -1,0 +1,255 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════
+   DESIGN TOKENS & BASE STYLES
+═══════════════════════════════════════════════ */
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+
+    /* Type scale */
+    --text-hero:    clamp(2.2rem, 4.5vw, 3.4rem);  /* Hero h1          */
+    --text-section: clamp(1.7rem, 3.2vw, 2.4rem);  /* Section h2       */
+    --text-card-h:  clamp(1rem, 1.8vw, 1.15rem);   /* Card headings h3 */
+    --text-body:    0.9rem;                         /* Body copy        */
+    --text-small:   0.8rem;                         /* Captions, labels */
+    --text-xs:      0.72rem;                        /* Footer, badges   */
+
+    /* Color palette — softened text for premium look */
+    --clr-teal:     #00C4BC;
+    --clr-teal-dk:  #009990;
+    --clr-navy:     #0B2559;
+    --clr-blue:     #1A52C4;
+    --clr-red:      #E63946;
+    --clr-dark:     #111118;
+    --clr-dark-2:   #1A1A22;
+    --clr-surface:  #F4F6F9;
+    --clr-text:     #1E293B;   /* Slate-800: soft, elegant dark instead of harsh black */
+    --clr-muted:    #64748B;   /* Slate-500: smooth, readable secondary text */
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    background-color: #FAFAFC;
+    color: var(--clr-text);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    line-height: 1.65;
+    letter-spacing: -0.01em;
+  }
+
+  * { box-sizing: border-box; }
+
+  /* Typography hierarchy — soft dark colors and comfortable line heights */
+  h1 { font-size: var(--text-hero);    font-weight: 800; letter-spacing: -0.025em; line-height: 1.15; color: #1E293B; }
+  h2 { font-size: var(--text-section); font-weight: 800; letter-spacing: -0.02em;  line-height: 1.25; color: #1E293B; }
+  h3 { font-size: var(--text-card-h);  font-weight: 700; letter-spacing: -0.01em;  line-height: 1.35; color: #1E293B; }
+  p  { font-size: var(--text-body);    color: var(--clr-muted); line-height: 1.7; font-weight: 400; }
+}
+
+
+/* ═══════════════════════════════════════════════
+   SCROLL-TRIGGERED ANIMATIONS
+═══════════════════════════════════════════════ */
+
+/* Base — elements start hidden */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slide from left */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-36px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Slide from right */
+.reveal-right {
+  opacity: 0;
+  transform: translateX(36px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Scale in */
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.94);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger delays for children */
+.stagger-1  { transition-delay: 0.05s; }
+.stagger-2  { transition-delay: 0.12s; }
+.stagger-3  { transition-delay: 0.19s; }
+.stagger-4  { transition-delay: 0.26s; }
+.stagger-5  { transition-delay: 0.33s; }
+.stagger-6  { transition-delay: 0.40s; }
+.stagger-7  { transition-delay: 0.47s; }
+.stagger-8  { transition-delay: 0.54s; }
+
+
+/* ═══════════════════════════════════════════════
+   PERSISTENT MICRO-ANIMATIONS
+═══════════════════════════════════════════════ */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-7px); }
+}
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.04); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes badge-bounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  40%       { transform: translateY(-4px) scale(1.04); }
+  60%       { transform: translateY(-2px) scale(1.02); }
+}
+
+.animate-float        { animation: float 4.5s ease-in-out infinite; }
+.animate-pulse-glow   { animation: pulseGlow 3s ease-in-out infinite; }
+.animate-spin-slow    { animation: spin-slow 12s linear infinite; }
+.animate-badge-bounce { animation: badge-bounce 2.5s ease-in-out infinite; }
+
+
+/* ═══════════════════════════════════════════════
+   SHIMMER TEXT EFFECT (for headings)
+═══════════════════════════════════════════════ */
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    #0F172A 0%,
+    #1A52C4 40%,
+    #00C4BC 55%,
+    #0F172A 100%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+.text-shimmer-teal {
+  background: linear-gradient(90deg, #00C4BC 0%, #00E5DB 45%, #009990 100%);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+
+/* ═══════════════════════════════════════════════
+   BUTTON SYSTEM
+═══════════════════════════════════════════════ */
+.btn-primary-red {
+  background: linear-gradient(135deg, #FF3C5B 0%, #E62E4C 100%);
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+  box-shadow: 0 4px 18px rgba(255, 60, 91, 0.35);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary-red::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.btn-primary-red:hover::after { opacity: 1; }
+.btn-primary-red:hover {
+  box-shadow: 0 8px 28px rgba(255, 60, 91, 0.48);
+  transform: translateY(-2px);
+}
+.btn-primary-red:active { transform: translateY(1px); box-shadow: 0 2px 10px rgba(255,60,91,0.3); }
+
+
+/* ═══════════════════════════════════════════════
+   CARD SYSTEM
+═══════════════════════════════════════════════ */
+.vpn-banner-card {
+  background: linear-gradient(135deg, #F0F3F7 0%, #E8EDF3 100%);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.05);
+}
+
+/* Feature card hover */
+.feature-card {
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.2s;
+}
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px -8px rgba(0, 196, 188, 0.18);
+  border-color: rgba(0, 196, 188, 0.35);
+}
+
+
+/* ═══════════════════════════════════════════════
+   GRADIENT SECTION DIVIDERS
+═══════════════════════════════════════════════ */
+.section-divider-dark {
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, #00C4BC 50%, transparent 100%);
+  opacity: 0.35;
+  margin: 0;
+}
+
+
+/* ═══════════════════════════════════════════════
+   SCROLLBAR (minimal)
+═══════════════════════════════════════════════ */
+::-webkit-scrollbar       { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #94A3B8; }

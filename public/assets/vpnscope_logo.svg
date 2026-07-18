@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 290 72" fill="none">
+  <!-- Shield icon -->
+  <path d="M34 3L7 13v18c0 16 11 29 27 34C50 60 61 47 61 31V13L34 3Z" fill="#0B2559"/>
+  <path d="M34 9L13 18v14c0 12 8 22 21 26C47 54 55 44 55 32V18L34 9Z" fill="#1A52C4"/>
+  <!-- Globe circle -->
+  <circle cx="34" cy="33" r="11.5" fill="none" stroke="white" stroke-width="1.6"/>
+  <!-- Latitude lines -->
+  <line x1="22.6" y1="29.5" x2="45.4" y2="29.5" stroke="white" stroke-width="1.3"/>
+  <line x1="22.6" y1="36.5" x2="45.4" y2="36.5" stroke="white" stroke-width="1.3"/>
+  <!-- Meridian ellipse -->
+  <ellipse cx="34" cy="33" rx="5.5" ry="11.5" fill="none" stroke="white" stroke-width="1.3"/>
+  <!-- Keyhole circle -->
+  <circle cx="34" cy="33" r="2.8" fill="white"/>
+  <!-- Keyhole stem -->
+  <rect x="32.5" y="35.2" width="3" height="4" rx="1.2" fill="white"/>
+
+  <!-- VPN + Scope in one text block so they never overlap -->
+  <text
+    y="40"
+    font-family="Arial Black, Impact, sans-serif"
+    font-weight="900"
+    font-size="28"
+    letter-spacing="-0.3">
+    <tspan x="72" fill="#0B2559">VPN</tspan><tspan fill="#1A52C4">Scope</tspan>
+  </text>
+
+  <!-- Tagline -->
+  <text
+    x="72" y="54"
+    font-family="Arial, sans-serif"
+    font-weight="600"
+    font-size="8"
+    fill="#0B2559"
+    opacity="0.45"
+    letter-spacing="1.8">COMPARE • REVIEW • PROTECT</text>
+</svg>
