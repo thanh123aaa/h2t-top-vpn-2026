@@ -82,18 +82,18 @@ export default function HeroVpnBanner({ onGetVpnClick }) {
               </div>
             </div>
 
-            {/* CTA Button & Shortened Guarantee Badge on the exact same row */}
-            <div className="pt-4 flex flex-row items-center gap-4 sm:gap-6 flex-nowrap">
+            {/* CTA Button & Guarantee Badge — stacked on mobile, side-by-side on desktop */}
+            <div className="pt-4 flex flex-col sm:flex-row items-center justify-start gap-4 sm:gap-6">
               
               <button
                 onClick={onGetVpnClick}
-                className="bg-[#FF385C] hover:bg-[#E02D4F] text-white px-7 sm:px-8 py-3.5 rounded-[18px] text-base sm:text-lg font-extrabold tracking-wide cursor-pointer shadow-lg shadow-red-500/20 hover:scale-105 active:scale-95 transition-all shrink-0"
+                className="w-full sm:w-auto bg-[#FF385C] hover:bg-[#E02D4F] text-white px-8 py-3.5 rounded-[18px] text-base sm:text-lg font-extrabold tracking-wide cursor-pointer shadow-lg shadow-red-500/20 hover:scale-105 active:scale-95 transition-all text-center"
               >
                 Get VPNScope
               </button>
 
-              <div className="flex items-center gap-2 text-slate-900 font-extrabold text-base sm:text-lg shrink-0 whitespace-nowrap">
-                <span className="text-xl sm:text-2xl leading-none">🪙</span>
+              <div className="flex items-center justify-center gap-2 text-slate-800 font-extrabold text-sm sm:text-base whitespace-nowrap">
+                <span className="text-lg sm:text-xl leading-none">🪙</span>
                 <span>And you free 30 days</span>
               </div>
 
