@@ -181,10 +181,19 @@ export default function ComparisonTable({ onSelectVpn }) {
         </p>
       </div>
 
-      {/* ── Table wrapper ── */}
-      <div ref={tableRef} className={`reveal-scale ${tableVisible ? 'visible' : ''} w-full`}>
+      {/* ── Mobile horizontal scroll hint ── */}
+      <p className="block md:hidden text-center text-xs font-semibold text-slate-400 mb-4 flex items-center justify-center gap-1.5">
+        <svg className="w-4 h-4 text-slate-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+        </svg>
+        <span>Swipe horizontally to compare all VPNs</span>
+      </p>
 
-        {/* ── Grid header: label col + hero col + 4 competitor cols ── */}
+      {/* ── Table wrapper — smooth responsive horizontal scroll ── */}
+      <div ref={tableRef} className={`reveal-scale ${tableVisible ? 'visible' : ''} w-full overflow-x-auto pb-4 scrollbar-none`}>
+        <div className="min-w-[860px] pt-4">
+
+          {/* ── Grid header: label col + hero col + 4 competitor cols ── */}
         {/*  Using CSS grid with fr so it always fits the viewport  */}
         <div
           className="grid items-end"
@@ -313,6 +322,7 @@ export default function ComparisonTable({ onSelectVpn }) {
           </div>
         </div>
       </div>
+    </div>
 
       {/* ── Disclaimer ── */}
       <div className="mt-10 flex flex-col items-center gap-2">
