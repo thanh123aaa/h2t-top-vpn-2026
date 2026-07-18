@@ -213,8 +213,8 @@ export default function ComparisonTable({ onSelectVpn }) {
           <div className="flex justify-center"><MullvadLogo /></div>
         </div>
 
-        {/* ── Rows + Hero Card container ── */}
-        <div className="relative" style={{ minHeight: `${totalRowsH}px` }}>
+        {/* ── Rows + Hero Card container (extra height for button at bottom) ── */}
+        <div className="relative" style={{ minHeight: `${totalRowsH + BTN_H + 16}px` }}>
 
           {/* Data rows — alternating: even=gray bg, odd=white */}
           <div className="flex flex-col">
